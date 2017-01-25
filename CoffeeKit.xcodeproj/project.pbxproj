@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1AF9AA061E38A8A500ADF5C9 /* CoffeeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9AA0C1E38A8C100ADF5C9 /* CoffeeCountLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1AF9AA011E38A8A500ADF5C9 /* CoffeeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoffeeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoffeeKit.h; sourceTree = "<group>"; };
 		1AF9AA051E38A8A500ADF5C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AF9AA0C1E38A8C100ADF5C9 /* CoffeeCountLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeCountLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */,
 				1AF9AA051E38A8A500ADF5C9 /* Info.plist */,
+				1AF9AA0C1E38A8C100ADF5C9 /* CoffeeCountLabel.swift */,
 			);
 			path = CoffeeKit;
 			sourceTree = "<group>";
@@ -96,6 +99,7 @@
 					1AF9AA001E38A8A500ADF5C9 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7P66TM94V9;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +245,7 @@
 		1AF9AA0A1E38A8A500ADF5C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7P66TM94V9;
@@ -252,6 +258,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.thryselius.CoffeeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -259,6 +266,7 @@
 		1AF9AA0B1E38A8A500ADF5C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7P66TM94V9;
