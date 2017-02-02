@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A14F9EE1E432C00003C0670 /* CoffeeEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A14F9ED1E432C00003C0670 /* CoffeeEventHandler.swift */; };
+		1A1CE6331E4226E800756E7E /* CoffeeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CE6321E4226E800756E7E /* CoffeeError.swift */; };
+		1A1CE6351E4226FF00756E7E /* CoffeeValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CE6341E4226FF00756E7E /* CoffeeValidation.swift */; };
 		1AF9AA061E38A8A500ADF5C9 /* CoffeeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9AA0C1E38A8C100ADF5C9 /* CoffeeCountLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A14F9ED1E432C00003C0670 /* CoffeeEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeEventHandler.swift; sourceTree = "<group>"; };
+		1A1CE6321E4226E800756E7E /* CoffeeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeError.swift; sourceTree = "<group>"; };
+		1A1CE6341E4226FF00756E7E /* CoffeeValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeValidation.swift; sourceTree = "<group>"; };
 		1AF9AA011E38A8A500ADF5C9 /* CoffeeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoffeeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoffeeKit.h; sourceTree = "<group>"; };
 		1AF9AA051E38A8A500ADF5C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +57,9 @@
 				1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */,
 				1AF9AA051E38A8A500ADF5C9 /* Info.plist */,
 				1AF9AA0C1E38A8C100ADF5C9 /* CoffeeCountLabel.swift */,
+				1A14F9ED1E432C00003C0670 /* CoffeeEventHandler.swift */,
+				1A1CE6321E4226E800756E7E /* CoffeeError.swift */,
+				1A1CE6341E4226FF00756E7E /* CoffeeValidation.swift */,
 			);
 			path = CoffeeKit;
 			sourceTree = "<group>";
@@ -136,7 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1CE6351E4226FF00756E7E /* CoffeeValidation.swift in Sources */,
+				1A1CE6331E4226E800756E7E /* CoffeeError.swift in Sources */,
 				1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */,
+				1A14F9EE1E432C00003C0670 /* CoffeeEventHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +266,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = CoffeeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.thryselius.CoffeeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -275,6 +288,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = CoffeeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.thryselius.CoffeeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +316,7 @@
 				1AF9AA0B1E38A8A500ADF5C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CoffeeCountLabel: UILabel {
+public class CoffeeCountLabel: UILabel {
     
     @IBInspectable public var start : Int = 3 {
         didSet {
@@ -22,13 +22,13 @@ class CoffeeCountLabel: UILabel {
     internal var counter : Int = 0
     internal var timer : Timer!
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         self.text = "\(self.start)"
     }
     
-    public func startAnimateCountdown(callback: @escaping () -> Void) {
+    public func startAnimateCount(callback: @escaping () -> Void) {
         self.reset()
         
         self.isHidden = false
