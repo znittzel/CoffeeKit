@@ -51,17 +51,17 @@ public class CoffeeImagePresenter: UIView {
             return
         }
         
-        let pic1View = CircledImageView(image: pic1)
-        let pic2View = CircledImageView(image: pic2)
-        let pic3View = CircledImageView(image: pic3)
-        let pic4View = CircledImageView(image: pic4)
-        let pic5View = CircledImageView(image: pic5)
+        let picViews = [
+            CircledImageView(image: pic1),
+            CircledImageView(image: pic2),
+            CircledImageView(image: pic3),
+            CircledImageView(image: pic4),
+            CircledImageView(image: pic5)
+        ]
         
-        self.imageViews.append(pic1View)
-        self.imageViews.append(pic2View)
-        self.imageViews.append(pic3View)
-        self.imageViews.append(pic4View)
-        self.imageViews.append(pic5View)
+        for i in 0...Int(arc4random_uniform(UInt32(picViews.count))) {
+            self.imageViews.append(picViews[i])
+        }
         
         self.updateImageViews()
         self.example_isInit = true
@@ -90,14 +90,32 @@ public class CoffeeImagePresenter: UIView {
         }
     }
     
-    public func addImageView(imgView: CircledImageView) {
+    public func add(imageView: CircledImageView) {
+        self.checkAndRemoveExampleViews()
+        
+        self.imageViews.append(imageView)
+        self.updateImageViews()
+    }
+    
+    public func add(imageViews: [CircledImageView]) {
+        self.checkAndRemoveExampleViews()
+        
+        for img in imageViews {
+            self.imageViews.append(img)
+        }
+        
+        self.updateImageViews()
+    }
+    
+    public func removeImageViews() {
+        self.imageViews.removeAll()
+    }
+    
+    private func checkAndRemoveExampleViews() {
         if example_isInit {
             self.imageViews.removeAll()
             example_isInit = false
         }
-        
-        self.imageViews.append(imgView)
-        self.updateImageViews()
     }
 
 }
