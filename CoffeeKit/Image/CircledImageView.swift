@@ -27,6 +27,7 @@ public class CircledImageView: UIImageView {
     private func setupView() {
         self.layer.cornerRadius = min(self.bounds.width, self.bounds.height) / 2
         self.clipsToBounds = true
+        self.contentMode = .scaleAspectFill
     }
 
 }
