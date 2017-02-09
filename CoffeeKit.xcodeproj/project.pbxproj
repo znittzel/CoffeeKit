@@ -22,6 +22,8 @@
 		1A3378F81E4C8EED00057400 /* profilepic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A3378F51E4C8EED00057400 /* profilepic2.jpg */; };
 		1A3378F91E4C8EED00057400 /* profilepic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A3378F61E4C8EED00057400 /* profilepic1.jpg */; };
 		1A3378FC1E4C8F6700057400 /* CoffeeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3378FB1E4C8F6700057400 /* CoffeeResource.swift */; };
+		1A3ACE1F1E4CB62C00D6BFEA /* profilepic5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A3ACE1D1E4CB62C00D6BFEA /* profilepic5.jpg */; };
+		1A3ACE201E4CB62C00D6BFEA /* profilepic4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A3ACE1E1E4CB62C00D6BFEA /* profilepic4.jpg */; };
 		1A49C7751E45EF740065B174 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C7741E45EF740065B174 /* Event.swift */; };
 		1A49C7771E45EF9C0065B174 /* SlaveEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C7761E45EF9C0065B174 /* SlaveEventHandler.swift */; };
 		1A49C7791E45EFC20065B174 /* MultiEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C7781E45EFC20065B174 /* MultiEventHandler.swift */; };
@@ -49,6 +51,8 @@
 		1A3378F51E4C8EED00057400 /* profilepic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profilepic2.jpg; sourceTree = "<group>"; };
 		1A3378F61E4C8EED00057400 /* profilepic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profilepic1.jpg; sourceTree = "<group>"; };
 		1A3378FB1E4C8F6700057400 /* CoffeeResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeResource.swift; path = Resources/CoffeeResource.swift; sourceTree = "<group>"; };
+		1A3ACE1D1E4CB62C00D6BFEA /* profilepic5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profilepic5.jpg; sourceTree = "<group>"; };
+		1A3ACE1E1E4CB62C00D6BFEA /* profilepic4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profilepic4.jpg; sourceTree = "<group>"; };
 		1A49C7741E45EF740065B174 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = EventHandler/Event.swift; sourceTree = "<group>"; };
 		1A49C7761E45EF9C0065B174 /* SlaveEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlaveEventHandler.swift; path = EventHandler/SlaveEventHandler.swift; sourceTree = "<group>"; };
 		1A49C7781E45EFC20065B174 /* MultiEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiEventHandler.swift; path = EventHandler/MultiEventHandler.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 		1A3378F11E4C8C2800057400 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1A3ACE1D1E4CB62C00D6BFEA /* profilepic5.jpg */,
+				1A3ACE1E1E4CB62C00D6BFEA /* profilepic4.jpg */,
 				1A3378F41E4C8EED00057400 /* profilepic3.jpg */,
 				1A3378F51E4C8EED00057400 /* profilepic2.jpg */,
 				1A3378F61E4C8EED00057400 /* profilepic1.jpg */,
@@ -260,6 +266,8 @@
 				1A3378F91E4C8EED00057400 /* profilepic1.jpg in Resources */,
 				1A3378F81E4C8EED00057400 /* profilepic2.jpg in Resources */,
 				1A3378F71E4C8EED00057400 /* profilepic3.jpg in Resources */,
+				1A3ACE201E4CB62C00D6BFEA /* profilepic4.jpg in Resources */,
+				1A3ACE1F1E4CB62C00D6BFEA /* profilepic5.jpg in Resources */,
 				1A2DB9781E4BCC5B00270600 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

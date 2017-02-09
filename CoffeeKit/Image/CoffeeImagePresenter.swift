@@ -43,13 +43,25 @@ public class CoffeeImagePresenter: UIView {
             return
         }
         
+        guard let pic4 = CoffeeResource.getImage(name: "profilepic4", type: "jpg") else {
+            return
+        }
+        
+        guard let pic5 = CoffeeResource.getImage(name: "profilepic5", type: "jpg") else {
+            return
+        }
+        
         let pic1View = CircledImageView(image: pic1)
         let pic2View = CircledImageView(image: pic2)
         let pic3View = CircledImageView(image: pic3)
+        let pic4View = CircledImageView(image: pic4)
+        let pic5View = CircledImageView(image: pic5)
         
         self.imageViews.append(pic1View)
         self.imageViews.append(pic2View)
         self.imageViews.append(pic3View)
+        self.imageViews.append(pic4View)
+        self.imageViews.append(pic5View)
         
         self.updateImageViews()
         self.example_isInit = true
