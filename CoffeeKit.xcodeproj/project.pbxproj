@@ -16,6 +16,12 @@
 		1A2DB9791E4BCC5B00270600 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DB9741E4BCC5B00270600 /* FontAwesome.swift */; };
 		1A2DB97A1E4BCC5B00270600 /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DB9751E4BCC5B00270600 /* FontAwesomeView.swift */; };
 		1A2DB97D1E4BCC8500270600 /* FontAwesomeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DB97C1E4BCC8500270600 /* FontAwesomeImage.swift */; };
+		1A3378EF1E4C88B700057400 /* CoffeeImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3378EE1E4C88B700057400 /* CoffeeImagePresenter.swift */; };
+		1A3378F31E4C8C7300057400 /* CircledImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3378F21E4C8C7300057400 /* CircledImageView.swift */; };
+		1A3378F71E4C8EED00057400 /* profilepic3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A3378F41E4C8EED00057400 /* profilepic3.jpg */; };
+		1A3378F81E4C8EED00057400 /* profilepic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A3378F51E4C8EED00057400 /* profilepic2.jpg */; };
+		1A3378F91E4C8EED00057400 /* profilepic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A3378F61E4C8EED00057400 /* profilepic1.jpg */; };
+		1A3378FC1E4C8F6700057400 /* CoffeeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3378FB1E4C8F6700057400 /* CoffeeResource.swift */; };
 		1A49C7751E45EF740065B174 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C7741E45EF740065B174 /* Event.swift */; };
 		1A49C7771E45EF9C0065B174 /* SlaveEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C7761E45EF9C0065B174 /* SlaveEventHandler.swift */; };
 		1A49C7791E45EFC20065B174 /* MultiEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C7781E45EFC20065B174 /* MultiEventHandler.swift */; };
@@ -37,6 +43,12 @@
 		1A2DB9741E4BCC5B00270600 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
 		1A2DB9751E4BCC5B00270600 /* FontAwesomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeView.swift; sourceTree = "<group>"; };
 		1A2DB97C1E4BCC8500270600 /* FontAwesomeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesomeImage.swift; path = Image/FontAwesomeImage.swift; sourceTree = "<group>"; };
+		1A3378EE1E4C88B700057400 /* CoffeeImagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeImagePresenter.swift; path = Image/CoffeeImagePresenter.swift; sourceTree = "<group>"; };
+		1A3378F21E4C8C7300057400 /* CircledImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircledImageView.swift; path = Image/CircledImageView.swift; sourceTree = "<group>"; };
+		1A3378F41E4C8EED00057400 /* profilepic3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profilepic3.jpg; sourceTree = "<group>"; };
+		1A3378F51E4C8EED00057400 /* profilepic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profilepic2.jpg; sourceTree = "<group>"; };
+		1A3378F61E4C8EED00057400 /* profilepic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profilepic1.jpg; sourceTree = "<group>"; };
+		1A3378FB1E4C8F6700057400 /* CoffeeResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeResource.swift; path = Resources/CoffeeResource.swift; sourceTree = "<group>"; };
 		1A49C7741E45EF740065B174 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = EventHandler/Event.swift; sourceTree = "<group>"; };
 		1A49C7761E45EF9C0065B174 /* SlaveEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlaveEventHandler.swift; path = EventHandler/SlaveEventHandler.swift; sourceTree = "<group>"; };
 		1A49C7781E45EFC20065B174 /* MultiEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiEventHandler.swift; path = EventHandler/MultiEventHandler.swift; sourceTree = "<group>"; };
@@ -81,15 +93,36 @@
 			name = FontAwesome;
 			sourceTree = "<group>";
 		};
-		1A2DB97B1E4BCC6500270600 /* Image */ = {
+		1A2DB97B1E4BCC6500270600 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				1A2DB97C1E4BCC8500270600 /* FontAwesomeImage.swift */,
+				1A3378EE1E4C88B700057400 /* CoffeeImagePresenter.swift */,
+				1A3378F21E4C8C7300057400 /* CircledImageView.swift */,
 			);
-			name = Image;
+			name = Images;
 			sourceTree = "<group>";
 		};
-		1A49C7731E45EF460065B174 /* EventHandler */ = {
+		1A3378F01E4C8C1D00057400 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A3378F11E4C8C2800057400 /* Images */,
+				1A3378FB1E4C8F6700057400 /* CoffeeResource.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1A3378F11E4C8C2800057400 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1A3378F41E4C8EED00057400 /* profilepic3.jpg */,
+				1A3378F51E4C8EED00057400 /* profilepic2.jpg */,
+				1A3378F61E4C8EED00057400 /* profilepic1.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		1A49C7731E45EF460065B174 /* EventHandlers */ = {
 			isa = PBXGroup;
 			children = (
 				1A49C7741E45EF740065B174 /* Event.swift */,
@@ -97,23 +130,23 @@
 				1A49C7781E45EFC20065B174 /* MultiEventHandler.swift */,
 				1A49C77A1E45EFE70065B174 /* MasterEventHandler.swift */,
 			);
-			name = EventHandler;
+			name = EventHandlers;
 			sourceTree = "<group>";
 		};
-		1A88FE481E4BC5EA00626CF5 /* Button */ = {
+		1A88FE481E4BC5EA00626CF5 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				1A88FE491E4BC71800626CF5 /* CoffeeButton.swift */,
 			);
-			name = Button;
+			name = Buttons;
 			sourceTree = "<group>";
 		};
-		1A9DDBA41E4B7EA90047DBA7 /* TextField */ = {
+		1A9DDBA41E4B7EA90047DBA7 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
 				1A9DDBA51E4B7EC80047DBA7 /* CoffeeTextField.swift */,
 			);
-			name = TextField;
+			name = TextFields;
 			sourceTree = "<group>";
 		};
 		1AF9A9F71E38A8A500ADF5C9 = {
@@ -135,11 +168,12 @@
 		1AF9AA031E38A8A500ADF5C9 /* CoffeeKit */ = {
 			isa = PBXGroup;
 			children = (
-				1A2DB97B1E4BCC6500270600 /* Image */,
+				1A3378F01E4C8C1D00057400 /* Resources */,
+				1A2DB97B1E4BCC6500270600 /* Images */,
 				1A2DB96F1E4BCC2300270600 /* External Libraries */,
-				1A88FE481E4BC5EA00626CF5 /* Button */,
-				1A9DDBA41E4B7EA90047DBA7 /* TextField */,
-				1A49C7731E45EF460065B174 /* EventHandler */,
+				1A88FE481E4BC5EA00626CF5 /* Buttons */,
+				1A9DDBA41E4B7EA90047DBA7 /* TextFields */,
+				1A49C7731E45EF460065B174 /* EventHandlers */,
 				1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */,
 				1AF9AA051E38A8A500ADF5C9 /* Info.plist */,
 				1AF9AA0C1E38A8C100ADF5C9 /* CoffeeCountLabel.swift */,
@@ -223,6 +257,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A3378F91E4C8EED00057400 /* profilepic1.jpg in Resources */,
+				1A3378F81E4C8EED00057400 /* profilepic2.jpg in Resources */,
+				1A3378F71E4C8EED00057400 /* profilepic3.jpg in Resources */,
 				1A2DB9781E4BCC5B00270600 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,13 +272,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A1CE6351E4226FF00756E7E /* CoffeeValidation.swift in Sources */,
+				1A3378F31E4C8C7300057400 /* CircledImageView.swift in Sources */,
 				1A9DDBA61E4B7EC80047DBA7 /* CoffeeTextField.swift in Sources */,
 				1A2DB9761E4BCC5B00270600 /* Enum.swift in Sources */,
 				1A1CE6331E4226E800756E7E /* CoffeeError.swift in Sources */,
 				1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */,
 				1AF93D931E4534110017039C /* test.swift in Sources */,
+				1A3378FC1E4C8F6700057400 /* CoffeeResource.swift in Sources */,
 				1A49C7751E45EF740065B174 /* Event.swift in Sources */,
 				1A49C7791E45EFC20065B174 /* MultiEventHandler.swift in Sources */,
+				1A3378EF1E4C88B700057400 /* CoffeeImagePresenter.swift in Sources */,
 				1A14F9EE1E432C00003C0670 /* CoffeeEventHandler.swift in Sources */,
 				1A49C7771E45EF9C0065B174 /* SlaveEventHandler.swift in Sources */,
 				1A2DB97D1E4BCC8500270600 /* FontAwesomeImage.swift in Sources */,

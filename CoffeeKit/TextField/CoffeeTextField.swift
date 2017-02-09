@@ -18,6 +18,7 @@ public class CoffeeTextField: UITextField {
     }
     
     var is_init = false
+    var border = CALayer()
     
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -43,13 +44,12 @@ public class CoffeeTextField: UITextField {
     }
 
     private func setBorder() {
-        let border = CALayer()
         let width = CGFloat(1.0)
-        border.borderColor = UIColor.white.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
+        self.border.borderColor = UIColor.white.cgColor
+        self.border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
         
-        border.borderWidth = width
-        self.layer.addSublayer(border)
+        self.border.borderWidth = width
+        self.layer.addSublayer(self.border)
         self.layer.masksToBounds = true
     }
 }
