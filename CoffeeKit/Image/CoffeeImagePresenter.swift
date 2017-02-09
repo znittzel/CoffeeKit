@@ -11,6 +11,12 @@ import UIKit
 @IBDesignable
 public class CoffeeImagePresenter: UIView {
 
+    @IBInspectable public var maxDX : CGFloat = CGFloat(1.5) {
+        didSet {
+            updateImageViews()
+        }
+    }
+    
     var is_init = false
     var imageViews = [CircledImageView]()
     var example_isInit = false
@@ -74,7 +80,11 @@ public class CoffeeImagePresenter: UIView {
         
         let width = self.bounds.height
         let y = CGFloat(0)
-        let xDelta = self.bounds.width / CGFloat(self.imageViews.count)
+        var xDelta = width / self.maxDX
+        
+        if xDelta*CGFloat(self.imageViews.count-1)+width > self.bounds.width {
+            xDelta = (self.bounds.width - width) / CGFloat(self.imageViews.count-1)
+        }
         
         for index in 0..<self.imageViews.count {
             let imgView = self.imageViews[index]
