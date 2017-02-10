@@ -10,6 +10,7 @@
 		1A14F9EE1E432C00003C0670 /* CoffeeEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A14F9ED1E432C00003C0670 /* CoffeeEventHandler.swift */; };
 		1A1CE6331E4226E800756E7E /* CoffeeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CE6321E4226E800756E7E /* CoffeeError.swift */; };
 		1A1CE6351E4226FF00756E7E /* CoffeeValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CE6341E4226FF00756E7E /* CoffeeValidation.swift */; };
+		1A23D4531E4E0EBD002E1484 /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A23D4521E4E0EBD002E1484 /* FontAwesomeButton.swift */; };
 		1A2DB9761E4BCC5B00270600 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DB9711E4BCC5B00270600 /* Enum.swift */; };
 		1A2DB9771E4BCC5B00270600 /* FontAwesome.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2DB9721E4BCC5B00270600 /* FontAwesome.h */; };
 		1A2DB9781E4BCC5B00270600 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DB9731E4BCC5B00270600 /* FontAwesome.otf */; };
@@ -39,6 +40,7 @@
 		1A14F9ED1E432C00003C0670 /* CoffeeEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeEventHandler.swift; sourceTree = "<group>"; };
 		1A1CE6321E4226E800756E7E /* CoffeeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeError.swift; sourceTree = "<group>"; };
 		1A1CE6341E4226FF00756E7E /* CoffeeValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeValidation.swift; sourceTree = "<group>"; };
+		1A23D4521E4E0EBD002E1484 /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesomeButton.swift; path = Button/FontAwesomeButton.swift; sourceTree = "<group>"; };
 		1A2DB9711E4BCC5B00270600 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		1A2DB9721E4BCC5B00270600 /* FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesome.h; sourceTree = "<group>"; };
 		1A2DB9731E4BCC5B00270600 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
@@ -77,6 +79,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A23D4541E4E1BB6002E1484 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		1A2DB96F1E4BCC2300270600 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				1A88FE491E4BC71800626CF5 /* CoffeeButton.swift */,
+				1A23D4521E4E0EBD002E1484 /* FontAwesomeButton.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -174,6 +184,7 @@
 		1AF9AA031E38A8A500ADF5C9 /* CoffeeKit */ = {
 			isa = PBXGroup;
 			children = (
+				1A23D4541E4E1BB6002E1484 /* Views */,
 				1A3378F01E4C8C1D00057400 /* Resources */,
 				1A2DB97B1E4BCC6500270600 /* Images */,
 				1A2DB96F1E4BCC2300270600 /* External Libraries */,
@@ -285,6 +296,7 @@
 				1A2DB9761E4BCC5B00270600 /* Enum.swift in Sources */,
 				1A1CE6331E4226E800756E7E /* CoffeeError.swift in Sources */,
 				1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */,
+				1A23D4531E4E0EBD002E1484 /* FontAwesomeButton.swift in Sources */,
 				1AF93D931E4534110017039C /* test.swift in Sources */,
 				1A3378FC1E4C8F6700057400 /* CoffeeResource.swift in Sources */,
 				1A49C7751E45EF740065B174 /* Event.swift in Sources */,

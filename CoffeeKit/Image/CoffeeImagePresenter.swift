@@ -65,7 +65,8 @@ public class CoffeeImagePresenter: UIView {
             CircledImageView(image: pic5)
         ]
         
-        for i in 0...Int(arc4random_uniform(UInt32(picViews.count))) {
+        //arc4random_uniform(UInt32(picViews.count))
+        for i in 0...Int(3) {
             self.imageViews.append(picViews[i])
         }
         
@@ -74,17 +75,23 @@ public class CoffeeImagePresenter: UIView {
     }
     
     public func updateImageViews() {
-        guard self.imageViews.count > 0 else {
+        let imgCount = self.imageViews.count
+        guard imgCount > 0 else {
             return
         }
         
+        let halvBoundsWidth = self.bounds.width/2
+        
         let width = self.bounds.height
+        let halfWidth = width / 2
         let y = CGFloat(0)
         var xDelta = width / self.maxDX
         
-        if xDelta*CGFloat(self.imageViews.count-1)+width > self.bounds.width {
-            xDelta = (self.bounds.width - width) / CGFloat(self.imageViews.count-1)
+        if xDelta*CGFloat(imgCount-1)+width > self.bounds.width {
+            xDelta = (self.bounds.width - width) / CGFloat(imgCount-1)
         }
+        
+        let startX = (halvBoundsWidth-halfWidth)-(CGFloat(imgCount-1)*xDelta/2)
         
         for index in 0..<self.imageViews.count {
             let imgView = self.imageViews[index]
@@ -93,7 +100,7 @@ public class CoffeeImagePresenter: UIView {
             imgView.removeFromSuperview()
             
             // Redo rect for imgView
-            imgView.frame = CGRect(x: (xDelta * CGFloat(index)), y: y, width: width, height: self.bounds.height)
+            imgView.frame = CGRect(x: startX+(xDelta * CGFloat(index)), y: y, width: width, height: self.bounds.height)
             
             // Add it back as subView
             self.addSubview(imgView)
