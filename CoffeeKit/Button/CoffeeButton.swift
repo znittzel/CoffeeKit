@@ -18,7 +18,7 @@ public class CoffeeButton: UIButton {
             self.layer.cornerRadius = CGFloat(self.cornerRadius)
         }
     }
-
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         

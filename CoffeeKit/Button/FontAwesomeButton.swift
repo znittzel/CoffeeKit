@@ -31,6 +31,12 @@ public class FontAwesomeButton: UIButton {
         }
     }
     
+    @IBInspectable public var round: Bool = false {
+        didSet {
+            self.updateIcon()
+        }
+    }
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -52,6 +58,14 @@ public class FontAwesomeButton: UIButton {
         }
         
         self.setImage(icon, for: .normal)
+        
+        if self.round {
+            self.layer.cornerRadius = min(self.bounds.width, self.bounds.height) / 2
+            self.clipsToBounds = true
+        } else {
+            self.layer.cornerRadius = 0
+            self.clipsToBounds = false
+        }
     }
 
 }

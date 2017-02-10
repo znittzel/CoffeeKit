@@ -11,6 +11,9 @@
 		1A1CE6331E4226E800756E7E /* CoffeeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CE6321E4226E800756E7E /* CoffeeError.swift */; };
 		1A1CE6351E4226FF00756E7E /* CoffeeValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CE6341E4226FF00756E7E /* CoffeeValidation.swift */; };
 		1A23D4531E4E0EBD002E1484 /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A23D4521E4E0EBD002E1484 /* FontAwesomeButton.swift */; };
+		1A23D4561E4E547A002E1484 /* CircledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A23D4551E4E547A002E1484 /* CircledView.swift */; };
+		1A23D4581E4E5789002E1484 /* CoffeeSwipeStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A23D4571E4E5789002E1484 /* CoffeeSwipeStateView.swift */; };
+		1A23D45C1E4E5B33002E1484 /* Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A23D45B1E4E5B33002E1484 /* Chameleon.h */; };
 		1A2DB9761E4BCC5B00270600 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DB9711E4BCC5B00270600 /* Enum.swift */; };
 		1A2DB9771E4BCC5B00270600 /* FontAwesome.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2DB9721E4BCC5B00270600 /* FontAwesome.h */; };
 		1A2DB9781E4BCC5B00270600 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DB9731E4BCC5B00270600 /* FontAwesome.otf */; };
@@ -41,6 +44,9 @@
 		1A1CE6321E4226E800756E7E /* CoffeeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeError.swift; sourceTree = "<group>"; };
 		1A1CE6341E4226FF00756E7E /* CoffeeValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeValidation.swift; sourceTree = "<group>"; };
 		1A23D4521E4E0EBD002E1484 /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesomeButton.swift; path = Button/FontAwesomeButton.swift; sourceTree = "<group>"; };
+		1A23D4551E4E547A002E1484 /* CircledView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircledView.swift; path = Views/CircledView.swift; sourceTree = "<group>"; };
+		1A23D4571E4E5789002E1484 /* CoffeeSwipeStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeSwipeStateView.swift; path = Views/CoffeeSwipeStateView.swift; sourceTree = "<group>"; };
+		1A23D45B1E4E5B33002E1484 /* Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon.h; sourceTree = "<group>"; };
 		1A2DB9711E4BCC5B00270600 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		1A2DB9721E4BCC5B00270600 /* FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesome.h; sourceTree = "<group>"; };
 		1A2DB9731E4BCC5B00270600 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
@@ -82,8 +88,26 @@
 		1A23D4541E4E1BB6002E1484 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1A23D4551E4E547A002E1484 /* CircledView.swift */,
+				1A23D4571E4E5789002E1484 /* CoffeeSwipeStateView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		1A23D4591E4E5A4F002E1484 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				1A23D45A1E4E5ABA002E1484 /* Chameleon */,
+			);
+			name = Color;
+			sourceTree = "<group>";
+		};
+		1A23D45A1E4E5ABA002E1484 /* Chameleon */ = {
+			isa = PBXGroup;
+			children = (
+				1A23D45B1E4E5B33002E1484 /* Chameleon.h */,
+			);
+			name = Chameleon;
 			sourceTree = "<group>";
 		};
 		1A2DB96F1E4BCC2300270600 /* External Libraries */ = {
@@ -119,6 +143,7 @@
 		1A3378F01E4C8C1D00057400 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A23D4591E4E5A4F002E1484 /* Color */,
 				1A3378F11E4C8C2800057400 /* Images */,
 				1A3378FB1E4C8F6700057400 /* CoffeeResource.swift */,
 			);
@@ -209,6 +234,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A23D45C1E4E5B33002E1484 /* Chameleon.h in Headers */,
 				1AF9AA061E38A8A500ADF5C9 /* CoffeeKit.h in Headers */,
 				1A2DB9771E4BCC5B00270600 /* FontAwesome.h in Headers */,
 			);
@@ -303,11 +329,13 @@
 				1A49C7791E45EFC20065B174 /* MultiEventHandler.swift in Sources */,
 				1A3378EF1E4C88B700057400 /* CoffeeImagePresenter.swift in Sources */,
 				1A14F9EE1E432C00003C0670 /* CoffeeEventHandler.swift in Sources */,
+				1A23D4561E4E547A002E1484 /* CircledView.swift in Sources */,
 				1A49C7771E45EF9C0065B174 /* SlaveEventHandler.swift in Sources */,
 				1A2DB97D1E4BCC8500270600 /* FontAwesomeImage.swift in Sources */,
 				1A88FE4A1E4BC71800626CF5 /* CoffeeButton.swift in Sources */,
 				1A2DB97A1E4BCC5B00270600 /* FontAwesomeView.swift in Sources */,
 				1A49C77B1E45EFE70065B174 /* MasterEventHandler.swift in Sources */,
+				1A23D4581E4E5789002E1484 /* CoffeeSwipeStateView.swift in Sources */,
 				1A2DB9791E4BCC5B00270600 /* FontAwesome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
