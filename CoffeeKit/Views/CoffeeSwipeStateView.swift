@@ -62,10 +62,11 @@ public class CoffeeSwipeStateView: UIView {
         }
     }
     
-    @IBInspectable public var deltaX: CGFloat = 5
-    @IBInspectable public var duration: Double = 0.5
+    @IBInspectable public var duration: Double = 0.3
     
     public var state : SwipeState = .Confirmed
+    
+    var deltaX: CGFloat = 5
     
     var confirmedLabel = UILabel()
     var awaitingLabel = UILabel()
@@ -75,11 +76,9 @@ public class CoffeeSwipeStateView: UIView {
     var awaitingView = UIView()
     var declinedView = UIView()
     
-    var confirmedViewHidden = false
-    var awaitingViewHidden = true
-    var declinedViewHidden = true
+    var currentState: SwipeState = .Confirmed
     
-    var swipeLeft: UISwipeGestureRecognizer!
+    var actions = [() -> Void]()
     
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -90,7 +89,69 @@ public class CoffeeSwipeStateView: UIView {
         // Setup recognizers
         self.setupRecognizers()
     }
-
+    
+    public func add(_ action: @escaping () -> Void) {
+        self.actions.append(action)
+    }
+    
+    public func set(_ state: SwipeState) {
+        switch state {
+        case .Confirmed:
+            guard self.currentState == .Awaiting else {
+                return
+            }
+            
+            self.animate {
+                self.confirmedView.frame.origin.x += (self.confirmedView.bounds.width-self.deltaX)
+            }
+            
+            self.currentState = .Confirmed
+            break
+            
+        case .Awaiting:
+            if self.currentState == .Confirmed {
+                self.animate {
+                    self.confirmedView.frame.origin.x -= (self.confirmedView.bounds.width-self.deltaX)
+                }
+            } else if self.currentState == .Declined {
+                self.animate {
+                    self.awaitingView.frame.origin.x += (self.confirmedView.bounds.width-self.deltaX*2)
+                }
+            }
+            
+            self.currentState = .Awaiting
+            break
+            
+        case .Declined:
+            guard self.currentState == .Awaiting else {
+                return
+            }
+            
+            self.animate {
+                self.awaitingView.frame.origin.x -= (self.confirmedView.bounds.width-self.deltaX*2)
+            }
+            
+            self.currentState = .Declined
+            break
+        }
+    }
+    
+    private func animate(_ this: @escaping () -> Void) {
+        UIView.animate(withDuration: self.duration,
+                       delay: 0,
+                       options: [.curveEaseInOut],
+                       animations: this,
+                       completion: { (done) in
+                        self.fireActions()
+        })
+    }
+    
+    private func fireActions() {
+        for action in self.actions {
+            action()
+        }
+    }
+    
     private func setupView() {
         var font: UIFont!
         
@@ -104,6 +165,7 @@ public class CoffeeSwipeStateView: UIView {
         self.declinedView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         self.declinedView.backgroundColor = self.declinedColor
         self.declinedLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.setShadowLayer(self.declinedView.layer)
         self.declinedLabel.textAlignment = .center
         self.declinedLabel.textColor = .white
         self.declinedLabel.text = self.declined
@@ -111,10 +173,11 @@ public class CoffeeSwipeStateView: UIView {
         self.declinedView.addSubview(self.declinedLabel)
         
         // Awaiting view
-        self.awaitingView.frame = CGRect(x: 0, y: 0, width: self.bounds.width-deltaX, height: self.bounds.height)
+        self.awaitingView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         self.awaitingView.backgroundColor = self.awaitingColor
         self.awaitingView.isUserInteractionEnabled = true
-        self.awaitingLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.width-deltaX, height: self.bounds.height)
+        self.awaitingLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.setShadowLayer(self.awaitingView.layer)
         self.awaitingLabel.textColor = .white
         self.awaitingLabel.textAlignment = .center
         self.awaitingLabel.text = self.awaiting
@@ -123,10 +186,11 @@ public class CoffeeSwipeStateView: UIView {
         self.awaitingView.addSubview(self.awaitingLabel)
         
         // Confirmed view
-        self.confirmedView.frame = CGRect(x: 0, y: 0, width: self.bounds.width-2*self.deltaX, height: self.bounds.height)
+        self.confirmedView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         self.confirmedView.backgroundColor = self.confirmedColor
         self.confirmedView.isUserInteractionEnabled = true
-        self.confirmedLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.width-2*self.deltaX, height: self.bounds.height)
+        self.setShadowLayer(self.confirmedView.layer)
+        self.confirmedLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         self.confirmedLabel.textColor = .white
         self.confirmedLabel.textAlignment = .center
         self.confirmedLabel.text = self.confirmed
@@ -145,6 +209,13 @@ public class CoffeeSwipeStateView: UIView {
         self.declinedLabel.font = f
         self.awaitingLabel.font = f
         self.confirmedLabel.font = f
+    }
+    
+    private func setShadowLayer(_ layer: CALayer) {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 1
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 1
     }
     
     private func setupRecognizers() {
@@ -166,27 +237,13 @@ public class CoffeeSwipeStateView: UIView {
     }
     
     func respondToConfirmedSwipeGesture(_ gesture: UIGestureRecognizer) {
-        guard self.declinedViewHidden && self.awaitingViewHidden && !self.confirmedViewHidden else {
-            return
-        }
-        
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
+            
             case UISwipeGestureRecognizerDirection.left:
-                self.declinedViewHidden = true
-                self.awaitingViewHidden = false
-                self.confirmedViewHidden = true
-                
-                UIView.animate(withDuration: self.duration,
-                               delay: 0,
-                               options: [.curveEaseInOut],
-                               animations: {
-                                    self.confirmedView.frame.origin.x -= (self.confirmedView.bounds.width-self.deltaX)
-                               },
-                               completion: { (done) in
-                                
-                               })
+                self.set(.Awaiting)
                 break
+            
             default:
                 break
             }
@@ -194,42 +251,17 @@ public class CoffeeSwipeStateView: UIView {
     }
     
     func respondToAwaitingSwipeGesture(_ gesture: UIGestureRecognizer) {
-        guard self.declinedViewHidden && !self.awaitingViewHidden && self.confirmedViewHidden else {
-            return
-        }
-        
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
+            
             case UISwipeGestureRecognizerDirection.right:
-                self.declinedViewHidden = true
-                self.awaitingViewHidden = true
-                self.confirmedViewHidden = false
-                
-                UIView.animate(withDuration: self.duration,
-                               delay: 0,
-                               options: [.curveEaseInOut],
-                               animations: {
-                                    self.confirmedView.frame.origin.x += (self.confirmedView.bounds.width-self.deltaX)
-                               },
-                               completion: { (done) in
-                                
-                               })
+                self.set(.Confirmed)
                 break
+                
             case UISwipeGestureRecognizerDirection.left:
-                self.declinedViewHidden = false
-                self.awaitingViewHidden = true
-                self.confirmedViewHidden = true
-                
-                UIView.animate(withDuration: self.duration,
-                               delay: 0,
-                               options: [.curveEaseInOut],
-                               animations: {
-                                    self.awaitingView.frame.origin.x -= (self.confirmedView.bounds.width-self.deltaX*2)
-                               },
-                               completion: { (done) in
-                                
-                               })
+                self.set(.Declined)
                 break
+            
             default:
                 break
             }
@@ -237,26 +269,11 @@ public class CoffeeSwipeStateView: UIView {
     }
     
     func respondToDeclinedSwipeGesture(_ gesture: UIGestureRecognizer) {
-        guard !self.declinedViewHidden && self.awaitingViewHidden && self.confirmedViewHidden else {
-            return
-        }
-        
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
+            
             case UISwipeGestureRecognizerDirection.right:
-                self.declinedViewHidden = true
-                self.awaitingViewHidden = false
-                self.confirmedViewHidden = true
-                
-                UIView.animate(withDuration: self.duration,
-                               delay: 0,
-                               options: [.curveEaseInOut],
-                               animations: {
-                                    self.awaitingView.frame.origin.x += (self.confirmedView.bounds.width-self.deltaX*2)
-                               },
-                               completion: { (done) in
-                                //
-                               })
+                self.set(.Awaiting)
                 break
             
             default:
