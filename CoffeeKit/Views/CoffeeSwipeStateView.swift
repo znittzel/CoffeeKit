@@ -113,7 +113,7 @@ public class CoffeeSwipeStateView: UIView {
      Rikard Olsson
      
      - returns:
-     Void
+     Bool indicating if it was set or not. Use forceSet() if false.
      
      - parameters:
         - state: A SwipeState, Confirmed, Declined or Awaiting
