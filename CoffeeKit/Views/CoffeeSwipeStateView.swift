@@ -78,7 +78,7 @@ public class CoffeeSwipeStateView: UIView {
     
     private var currentState: SwipeState = .Confirmed
     
-    var actions = [() -> Void]()
+    var actions = [(SwipeState) -> Void]()
     
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -90,95 +90,145 @@ public class CoffeeSwipeStateView: UIView {
         self.setupRecognizers()
     }
     
-    public func add(_ action: @escaping () -> Void) {
+    public func add(_ action: @escaping (_ currentState: SwipeState) -> Void) {
         self.actions.append(action)
     }
     
-    public func forceSet(_ state: SwipeState) {
-        switch state {
-        case .Awaiting:
-            self.currentState = .Awaiting
-            self.confirmedView.frame.origin.x -= (self.bounds.width - self.deltaX)
-            self.awaitingView.frame.origin.x = 0
-            self.declinedView.frame.origin.x = 0
-            break
-            
-        case .Confirmed:
-            self.currentState = .Confirmed
-            self.confirmedView.frame.origin.x = 0
-            self.awaitingView.frame.origin.x = 0
-            self.declinedView.frame.origin.x = 0
-            break
-            
-        case .Declined:
-            self.currentState = .Declined
-            var confFrame = self.confirmedView.frame
-            confFrame.origin.x = -(self.bounds.width)+self.deltaX
-            self.confirmedView.frame = confFrame
-            self.awaitingView.frame.origin.x -= (self.bounds.width - self.deltaX*2)
-            self.declinedView.frame.origin.x = 0
-            break
+    public func preSet(_ state: SwipeState) -> Bool {
+        if !is_init {
+            self.currentState = state
+            return true
+        } else {
+            return false
         }
-        
-        self.layoutIfNeeded()
     }
     
     public func set(_ state: SwipeState) {
-        switch state {
-        case .Confirmed:
-            guard self.currentState == .Awaiting else {
-                return
-            }
-            
-            self.animate {
-                self.confirmedView.frame.origin.x += (self.confirmedView.bounds.width-self.deltaX)
-            }
-            
-            self.currentState = .Confirmed
-            break
-            
+        self.animate(state)
+    }
+    
+    private func animate(_ to: SwipeState) {
+        switch to {
         case .Awaiting:
-            if self.currentState == .Confirmed {
-                self.animate {
-                    self.confirmedView.frame.origin.x -= (self.confirmedView.bounds.width-self.deltaX)
-                }
-            } else if self.currentState == .Declined {
-                self.animate {
-                    self.awaitingView.frame.origin.x += (self.confirmedView.bounds.width-self.deltaX*2)
-                }
+            switch self.currentState {
+            case .Awaiting:
+                return
+
+            case .Confirmed:
+                self.animate({ 
+                    self.confirmedView.frame.origin.x -= (self.bounds.width-self.deltaX)
+                }, { _ in
+                    self.currentState = .Awaiting
+                    self.fireActions()
+                })
+                break
+
+            case .Declined:
+                self.animate({
+                    self.awaitingView.frame.origin.x += (self.bounds.width-self.deltaX*2)
+                }, { _ in
+                    self.currentState = .Awaiting
+                    self.fireActions()
+                })
+                break
             }
-            
-            self.currentState = .Awaiting
             break
-            
+        case .Confirmed:
+            switch self.currentState {
+            case .Awaiting:
+                self.animate({ 
+                    self.confirmedView.frame.origin.x += (self.bounds.width-self.deltaX)
+                }, { _ in
+                    self.currentState = .Confirmed
+                    self.fireActions()
+                })
+                break
+                
+            case .Confirmed:
+                return
+                
+            case .Declined:
+                self.animate({ 
+                    self.awaitingView.frame.origin.x += (self.bounds.width-self.deltaX*2)
+                }, { _ in
+                    self.currentState = .Awaiting
+                    self.animate(.Confirmed)
+                    self.fireActions()
+                })
+                break
+            }
+            break
         case .Declined:
-            guard self.currentState == .Awaiting else {
+            switch self.currentState {
+            case .Awaiting:
+                self.animate({ 
+                    self.awaitingView.frame.origin.x -= (self.bounds.width-self.deltaX*2)
+                }, { _ in
+                    self.currentState = .Declined
+                    self.fireActions()
+                })
+                break
+                
+            case .Confirmed:
+                self.animate({ 
+                    self.confirmedView.frame.origin.x -= (self.bounds.width-self.deltaX)
+                }, { _ in
+                    self.currentState = .Awaiting
+                    self.animate(.Declined)
+                    self.fireActions()
+                })
+                break
+                
+            case .Declined:
                 return
             }
-            
-            self.animate {
-                self.awaitingView.frame.origin.x -= (self.confirmedView.bounds.width-self.deltaX*2)
-            }
-            
-            self.currentState = .Declined
             break
         }
     }
     
-    private func animate(_ this: @escaping () -> Void) {
+    private func animate(_ this: @escaping () -> Void, _ completion: ((_ done: Bool) -> Void)?) {
         UIView.animate(withDuration: self.duration,
                        delay: 0,
                        options: [.curveEaseInOut],
                        animations: this,
                        completion: { (done) in
-                        self.fireActions()
+                        if completion != nil {
+                            completion!(done)
+                        }
         })
     }
     
     private func fireActions() {
         for action in self.actions {
-            action()
+            action(self.currentState)
         }
+    }
+    
+    private func getRect(_ x: CGFloat = 0) -> CGRect {
+        return CGRect(x: x, y: 0, width: self.bounds.width, height: self.bounds.height)
+    }
+    
+    private func getRectsByState() -> [String:CGRect] {
+        var rects = [String: CGRect]()
+        
+        switch self.currentState {
+        case .Awaiting:
+            rects["Confirmed"] = self.getRect(-(self.bounds.width-self.deltaX))
+            rects["Awaiting"] = self.getRect()
+            break
+        case .Confirmed:
+            rects["Confirmed"] = self.getRect()
+            rects["Awaiting"] = self.getRect()
+            break
+        case .Declined:
+            rects["Confirmed"] = self.getRect(-(self.bounds.width-self.deltaX))
+            rects["Awaiting"] = self.getRect(-(self.bounds.width-self.deltaX*2))
+            break
+        }
+        
+        rects["Declined"] = self.getRect()
+        
+        return rects
     }
     
     private func setupView() {
@@ -190,10 +240,12 @@ public class CoffeeSwipeStateView: UIView {
             font = UIFont(name: "Helvetica", size: self.fontSize)
         }
         
+        var rects = self.getRectsByState()
+        
         // Declined view
-        self.declinedView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.declinedView.frame = rects["Declined"]!
         self.declinedView.backgroundColor = self.declinedColor
-        self.declinedLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.declinedLabel.frame = self.getRect()
         self.setShadowLayer(self.declinedView.layer)
         self.declinedLabel.textAlignment = .center
         self.declinedLabel.textColor = .white
@@ -202,10 +254,10 @@ public class CoffeeSwipeStateView: UIView {
         self.declinedView.addSubview(self.declinedLabel)
         
         // Awaiting view
-        self.awaitingView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.awaitingView.frame = rects["Awaiting"]!
         self.awaitingView.backgroundColor = self.awaitingColor
         self.awaitingView.isUserInteractionEnabled = true
-        self.awaitingLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.awaitingLabel.frame = self.getRect()
         self.setShadowLayer(self.awaitingView.layer)
         self.awaitingLabel.textColor = .white
         self.awaitingLabel.textAlignment = .center
@@ -215,11 +267,11 @@ public class CoffeeSwipeStateView: UIView {
         self.awaitingView.addSubview(self.awaitingLabel)
         
         // Confirmed view
-        self.confirmedView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.confirmedView.frame = rects["Confirmed"]!
         self.confirmedView.backgroundColor = self.confirmedColor
         self.confirmedView.isUserInteractionEnabled = true
         self.setShadowLayer(self.confirmedView.layer)
-        self.confirmedLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.confirmedLabel.frame = self.getRect()
         self.confirmedLabel.textColor = .white
         self.confirmedLabel.textAlignment = .center
         self.confirmedLabel.text = self.confirmed
@@ -231,6 +283,8 @@ public class CoffeeSwipeStateView: UIView {
         self.addSubview(self.declinedView)
         self.addSubview(self.awaitingView)
         self.addSubview(self.confirmedView)
+        
+        self.is_init = true
     }
     
     private func updateFontSize() {
