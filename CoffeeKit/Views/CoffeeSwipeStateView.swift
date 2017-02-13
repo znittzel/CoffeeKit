@@ -90,10 +90,34 @@ public class CoffeeSwipeStateView: UIView {
         self.setupRecognizers()
     }
     
+    /**
+     Adds function to execute when current state is changed by gui / animated change.
+     
+     - Author:
+     Rikard Olsson
+     
+     - returns:
+     Void
+     
+     - parameters:
+     - action: Function with a SwipeState parameter.
+     */
     public func add(_ action: @escaping (_ currentState: SwipeState) -> Void) {
         self.actions.append(action)
     }
     
+    /**
+     Will set view into state when layout subviews. E.g. in viewDidLoad in your UIViewController.
+     
+     - Author:
+     Rikard Olsson
+     
+     - returns:
+     Void
+     
+     - parameters:
+        - state: A SwipeState, Confirmed, Declined or Awaiting
+    */
     public func preSet(_ state: SwipeState) -> Bool {
         if !is_init {
             self.currentState = state
@@ -103,10 +127,18 @@ public class CoffeeSwipeStateView: UIView {
         }
     }
     
-    public func set(_ state: SwipeState) {
-        self.animate(state)
-    }
-    
+    /**
+     Animates to givin state.
+     
+     - Author:
+     Rikard Olsson
+     
+     - returns:
+     Void
+     
+     - parameters:
+     - state: A SwipeState, Confirmed, Declined or Awaiting
+     */
     private func animate(_ to: SwipeState) {
         switch to {
         case .Awaiting:
@@ -186,6 +218,28 @@ public class CoffeeSwipeStateView: UIView {
         }
     }
     
+    /**
+     Forces the view into the givin state.
+     
+     - Author:
+     Rikard Olsson
+     
+     - returns:
+     Void
+     
+     - parameters:
+     - state: A SwipeState, Confirmed, Declined or Awaiting
+     */
+    public func forceSet(_ state: SwipeState) {
+        let rects = self.getRectsBy(state)
+        
+        self.declinedView.frame = rects["Declined"]!
+        self.awaitingView.frame = rects["Awaiting"]!
+        self.confirmedView.frame = rects["Confirmed"]!
+        
+        self.currentState = state
+    }
+    
     private func animate(_ this: @escaping () -> Void, _ completion: ((_ done: Bool) -> Void)?) {
         UIView.animate(withDuration: self.duration,
                        delay: 0,
@@ -208,10 +262,33 @@ public class CoffeeSwipeStateView: UIView {
         return CGRect(x: x, y: 0, width: self.bounds.width, height: self.bounds.height)
     }
     
-    private func getRectsByState() -> [String:CGRect] {
+    private func getRectsByCurrentState() -> [String:CGRect] {
         var rects = [String: CGRect]()
         
         switch self.currentState {
+        case .Awaiting:
+            rects["Confirmed"] = self.getRect(-(self.bounds.width-self.deltaX))
+            rects["Awaiting"] = self.getRect()
+            break
+        case .Confirmed:
+            rects["Confirmed"] = self.getRect()
+            rects["Awaiting"] = self.getRect()
+            break
+        case .Declined:
+            rects["Confirmed"] = self.getRect(-(self.bounds.width-self.deltaX))
+            rects["Awaiting"] = self.getRect(-(self.bounds.width-self.deltaX*2))
+            break
+        }
+        
+        rects["Declined"] = self.getRect()
+        
+        return rects
+    }
+    
+    private func getRectsBy(_ state: SwipeState) -> [String:CGRect] {
+        var rects = [String: CGRect]()
+        
+        switch state {
         case .Awaiting:
             rects["Confirmed"] = self.getRect(-(self.bounds.width-self.deltaX))
             rects["Awaiting"] = self.getRect()
@@ -240,7 +317,7 @@ public class CoffeeSwipeStateView: UIView {
             font = UIFont(name: "Helvetica", size: self.fontSize)
         }
         
-        var rects = self.getRectsByState()
+        var rects = self.getRectsByCurrentState()
         
         // Declined view
         self.declinedView.frame = rects["Declined"]!
@@ -302,19 +379,19 @@ public class CoffeeSwipeStateView: UIView {
     }
     
     private func setupRecognizers() {
-        var swipeConfirmed = UISwipeGestureRecognizer(target: self, action: #selector(respondToConfirmedSwipeGesture(_:)))
+        let swipeConfirmed = UISwipeGestureRecognizer(target: self, action: #selector(respondToConfirmedSwipeGesture(_:)))
         swipeConfirmed.direction = .left
         self.confirmedView.addGestureRecognizer(swipeConfirmed)
         
-        var swipeAwaitingRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToAwaitingSwipeGesture(_:)))
+        let swipeAwaitingRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToAwaitingSwipeGesture(_:)))
         swipeAwaitingRight.direction = .right
         self.awaitingView.addGestureRecognizer(swipeAwaitingRight)
         
-        var swipeAwaitingLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToAwaitingSwipeGesture(_:)))
+        let swipeAwaitingLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToAwaitingSwipeGesture(_:)))
         swipeAwaitingLeft.direction = .left
         self.awaitingView.addGestureRecognizer(swipeAwaitingLeft)
         
-        var swipeDeclined = UISwipeGestureRecognizer(target: self, action: #selector(respondToDeclinedSwipeGesture(_:)))
+        let swipeDeclined = UISwipeGestureRecognizer(target: self, action: #selector(respondToDeclinedSwipeGesture(_:)))
         swipeDeclined.direction = .right
         self.declinedView.addGestureRecognizer(swipeDeclined)
     }
@@ -324,7 +401,7 @@ public class CoffeeSwipeStateView: UIView {
             switch swipeGesture.direction {
             
             case UISwipeGestureRecognizerDirection.left:
-                self.set(.Awaiting)
+                self.animate(.Awaiting)
                 break
             
             default:
@@ -338,11 +415,11 @@ public class CoffeeSwipeStateView: UIView {
             switch swipeGesture.direction {
             
             case UISwipeGestureRecognizerDirection.right:
-                self.set(.Confirmed)
+                self.animate(.Confirmed)
                 break
                 
             case UISwipeGestureRecognizerDirection.left:
-                self.set(.Declined)
+                self.animate(.Declined)
                 break
             
             default:
@@ -356,7 +433,7 @@ public class CoffeeSwipeStateView: UIView {
             switch swipeGesture.direction {
             
             case UISwipeGestureRecognizerDirection.right:
-                self.set(.Awaiting)
+                self.animate(.Awaiting)
                 break
             
             default:
