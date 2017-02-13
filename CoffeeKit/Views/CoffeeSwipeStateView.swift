@@ -66,17 +66,17 @@ public class CoffeeSwipeStateView: UIView {
     
     public var state : SwipeState = .Confirmed
     
-    var deltaX: CGFloat = 5
+    private var deltaX: CGFloat = 5
     
-    var confirmedLabel = UILabel()
-    var awaitingLabel = UILabel()
-    var declinedLabel = UILabel()
+    private var confirmedLabel = UILabel()
+    private var awaitingLabel = UILabel()
+    private var declinedLabel = UILabel()
     
-    var confirmedView = UIView()
-    var awaitingView = UIView()
-    var declinedView = UIView()
+    private var confirmedView = UIView()
+    private var awaitingView = UIView()
+    private var declinedView = UIView()
     
-    var currentState: SwipeState = .Confirmed
+    private var currentState: SwipeState = .Confirmed
     
     var actions = [() -> Void]()
     
@@ -92,6 +92,35 @@ public class CoffeeSwipeStateView: UIView {
     
     public func add(_ action: @escaping () -> Void) {
         self.actions.append(action)
+    }
+    
+    public func forceSet(_ state: SwipeState) {
+        switch state {
+        case .Awaiting:
+            self.currentState = .Awaiting
+            self.confirmedView.frame.origin.x -= (self.bounds.width - self.deltaX)
+            self.awaitingView.frame.origin.x = 0
+            self.declinedView.frame.origin.x = 0
+            break
+            
+        case .Confirmed:
+            self.currentState = .Confirmed
+            self.confirmedView.frame.origin.x = 0
+            self.awaitingView.frame.origin.x = 0
+            self.declinedView.frame.origin.x = 0
+            break
+            
+        case .Declined:
+            self.currentState = .Declined
+            var confFrame = self.confirmedView.frame
+            confFrame.origin.x = -(self.bounds.width)+self.deltaX
+            self.confirmedView.frame = confFrame
+            self.awaitingView.frame.origin.x -= (self.bounds.width - self.deltaX*2)
+            self.declinedView.frame.origin.x = 0
+            break
+        }
+        
+        self.layoutIfNeeded()
     }
     
     public func set(_ state: SwipeState) {

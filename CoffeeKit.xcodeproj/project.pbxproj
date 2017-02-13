@@ -34,6 +34,7 @@
 		1A49C77B1E45EFE70065B174 /* MasterEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C77A1E45EFE70065B174 /* MasterEventHandler.swift */; };
 		1A88FE4A1E4BC71800626CF5 /* CoffeeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A88FE491E4BC71800626CF5 /* CoffeeButton.swift */; };
 		1A9DDBA61E4B7EC80047DBA7 /* CoffeeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9DDBA51E4B7EC80047DBA7 /* CoffeeTextField.swift */; };
+		1ABED0751E4F53AD00470553 /* CoffeeInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABED0741E4F53AD00470553 /* CoffeeInteractiveTransition.swift */; };
 		1AF93D931E4534110017039C /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF93D921E4534110017039C /* test.swift */; };
 		1AF9AA061E38A8A500ADF5C9 /* CoffeeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9AA0C1E38A8C100ADF5C9 /* CoffeeCountLabel.swift */; };
@@ -67,6 +68,7 @@
 		1A49C77A1E45EFE70065B174 /* MasterEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterEventHandler.swift; path = EventHandler/MasterEventHandler.swift; sourceTree = "<group>"; };
 		1A88FE491E4BC71800626CF5 /* CoffeeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeButton.swift; path = Button/CoffeeButton.swift; sourceTree = "<group>"; };
 		1A9DDBA51E4B7EC80047DBA7 /* CoffeeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeTextField.swift; path = TextField/CoffeeTextField.swift; sourceTree = "<group>"; };
+		1ABED0741E4F53AD00470553 /* CoffeeInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeInteractiveTransition.swift; path = Views/CoffeeInteractiveTransition.swift; sourceTree = "<group>"; };
 		1AF93D921E4534110017039C /* test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		1AF9AA011E38A8A500ADF5C9 /* CoffeeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoffeeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoffeeKit.h; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				1A23D4551E4E547A002E1484 /* CircledView.swift */,
 				1A23D4571E4E5789002E1484 /* CoffeeSwipeStateView.swift */,
+				1ABED0741E4F53AD00470553 /* CoffeeInteractiveTransition.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				1A14F9EE1E432C00003C0670 /* CoffeeEventHandler.swift in Sources */,
 				1A23D4561E4E547A002E1484 /* CircledView.swift in Sources */,
 				1A49C7771E45EF9C0065B174 /* SlaveEventHandler.swift in Sources */,
+				1ABED0751E4F53AD00470553 /* CoffeeInteractiveTransition.swift in Sources */,
 				1A2DB97D1E4BCC8500270600 /* FontAwesomeImage.swift in Sources */,
 				1A88FE4A1E4BC71800626CF5 /* CoffeeButton.swift in Sources */,
 				1A2DB97A1E4BCC5B00270600 /* FontAwesomeView.swift in Sources */,
