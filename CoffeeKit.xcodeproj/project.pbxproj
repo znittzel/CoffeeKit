@@ -32,9 +32,11 @@
 		1A49C7771E45EF9C0065B174 /* SlaveEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C7761E45EF9C0065B174 /* SlaveEventHandler.swift */; };
 		1A49C7791E45EFC20065B174 /* MultiEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C7781E45EFC20065B174 /* MultiEventHandler.swift */; };
 		1A49C77B1E45EFE70065B174 /* MasterEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49C77A1E45EFE70065B174 /* MasterEventHandler.swift */; };
+		1A6B37331E78A156002E3E89 /* CoffeeTabBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B37321E78A156002E3E89 /* CoffeeTabBars.swift */; };
 		1A88FE4A1E4BC71800626CF5 /* CoffeeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A88FE491E4BC71800626CF5 /* CoffeeButton.swift */; };
 		1A9DDBA61E4B7EC80047DBA7 /* CoffeeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9DDBA51E4B7EC80047DBA7 /* CoffeeTextField.swift */; };
 		1ABED0751E4F53AD00470553 /* CoffeeInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABED0741E4F53AD00470553 /* CoffeeInteractiveTransition.swift */; };
+		1ACC33EE1E796BEA00F5A4CA /* CoffeeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC33ED1E796BEA00F5A4CA /* CoffeeTabBarItem.swift */; };
 		1AF93D931E4534110017039C /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF93D921E4534110017039C /* test.swift */; };
 		1AF9AA061E38A8A500ADF5C9 /* CoffeeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9AA0C1E38A8C100ADF5C9 /* CoffeeCountLabel.swift */; };
@@ -66,9 +68,11 @@
 		1A49C7761E45EF9C0065B174 /* SlaveEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlaveEventHandler.swift; path = EventHandler/SlaveEventHandler.swift; sourceTree = "<group>"; };
 		1A49C7781E45EFC20065B174 /* MultiEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiEventHandler.swift; path = EventHandler/MultiEventHandler.swift; sourceTree = "<group>"; };
 		1A49C77A1E45EFE70065B174 /* MasterEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterEventHandler.swift; path = EventHandler/MasterEventHandler.swift; sourceTree = "<group>"; };
+		1A6B37321E78A156002E3E89 /* CoffeeTabBars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeTabBars.swift; path = TabBars/CoffeeTabBars.swift; sourceTree = "<group>"; };
 		1A88FE491E4BC71800626CF5 /* CoffeeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeButton.swift; path = Button/CoffeeButton.swift; sourceTree = "<group>"; };
 		1A9DDBA51E4B7EC80047DBA7 /* CoffeeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeTextField.swift; path = TextField/CoffeeTextField.swift; sourceTree = "<group>"; };
 		1ABED0741E4F53AD00470553 /* CoffeeInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeInteractiveTransition.swift; path = Views/CoffeeInteractiveTransition.swift; sourceTree = "<group>"; };
+		1ACC33ED1E796BEA00F5A4CA /* CoffeeTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoffeeTabBarItem.swift; path = TabBars/TabBarItems/CoffeeTabBarItem.swift; sourceTree = "<group>"; };
 		1AF93D921E4534110017039C /* test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		1AF9AA011E38A8A500ADF5C9 /* CoffeeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoffeeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF9AA041E38A8A500ADF5C9 /* CoffeeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoffeeKit.h; sourceTree = "<group>"; };
@@ -176,6 +180,15 @@
 			name = EventHandlers;
 			sourceTree = "<group>";
 		};
+		1A6B37341E78A15D002E3E89 /* TabBars */ = {
+			isa = PBXGroup;
+			children = (
+				1ACC33EC1E796BC000F5A4CA /* TabBarItems */,
+				1A6B37321E78A156002E3E89 /* CoffeeTabBars.swift */,
+			);
+			name = TabBars;
+			sourceTree = "<group>";
+		};
 		1A88FE481E4BC5EA00626CF5 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +204,14 @@
 				1A9DDBA51E4B7EC80047DBA7 /* CoffeeTextField.swift */,
 			);
 			name = TextFields;
+			sourceTree = "<group>";
+		};
+		1ACC33EC1E796BC000F5A4CA /* TabBarItems */ = {
+			isa = PBXGroup;
+			children = (
+				1ACC33ED1E796BEA00F5A4CA /* CoffeeTabBarItem.swift */,
+			);
+			name = TabBarItems;
 			sourceTree = "<group>";
 		};
 		1AF9A9F71E38A8A500ADF5C9 = {
@@ -212,6 +233,7 @@
 		1AF9AA031E38A8A500ADF5C9 /* CoffeeKit */ = {
 			isa = PBXGroup;
 			children = (
+				1A6B37341E78A15D002E3E89 /* TabBars */,
 				1A23D4541E4E1BB6002E1484 /* Views */,
 				1A3378F01E4C8C1D00057400 /* Resources */,
 				1A2DB97B1E4BCC6500270600 /* Images */,
@@ -320,8 +342,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A1CE6351E4226FF00756E7E /* CoffeeValidation.swift in Sources */,
+				1A6B37331E78A156002E3E89 /* CoffeeTabBars.swift in Sources */,
 				1A3378F31E4C8C7300057400 /* CircledImageView.swift in Sources */,
 				1A9DDBA61E4B7EC80047DBA7 /* CoffeeTextField.swift in Sources */,
+				1ACC33EE1E796BEA00F5A4CA /* CoffeeTabBarItem.swift in Sources */,
 				1A2DB9761E4BCC5B00270600 /* Enum.swift in Sources */,
 				1A1CE6331E4226E800756E7E /* CoffeeError.swift in Sources */,
 				1AF9AA0D1E38A8C100ADF5C9 /* CoffeeCountLabel.swift in Sources */,
