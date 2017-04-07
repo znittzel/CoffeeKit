@@ -10,6 +10,18 @@ import UIKit
 
 @IBDesignable
 public class CircledImageView: UIImageView {
+    
+    @IBInspectable public var borderWidth : CGFloat = 0 {
+        didSet {
+            update()
+        }
+    }
+    
+    @IBInspectable public var borderColor : UIColor? {
+        didSet {
+            update()
+        }
+    }
 
     var is_init = false
     
@@ -30,4 +42,11 @@ public class CircledImageView: UIImageView {
         self.contentMode = .scaleAspectFill
     }
 
+    private func update() {
+        if let color = borderColor {
+            self.layer.borderColor = color.cgColor
+        }
+        
+        self.layer.borderWidth = borderWidth
+    }
 }

@@ -21,6 +21,8 @@ public class CoffeeImagePresenter: UIView {
     var imageViews = [CircledImageView]()
     var example_isInit = false
     
+    public var doNotUseExamples = false
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -30,7 +32,7 @@ public class CoffeeImagePresenter: UIView {
             // Setup view
             self.updateImageViews()
             
-            if self.imageViews.count == 0 {
+            if self.imageViews.count == 0 && !doNotUseExamples {
                 self.loadExampleImages()
             }
         }
@@ -126,9 +128,13 @@ public class CoffeeImagePresenter: UIView {
     
     public func removeImageViews() {
         self.imageViews.removeAll()
+        
+        for subView in self.subviews {
+            subView.removeFromSuperview()
+        }
     }
     
-    private func checkAndRemoveExampleViews() {
+    public func checkAndRemoveExampleViews() {
         if example_isInit {
             self.imageViews.removeAll()
             example_isInit = false
