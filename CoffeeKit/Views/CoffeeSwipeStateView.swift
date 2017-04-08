@@ -80,6 +80,8 @@ public class CoffeeSwipeStateView: UIView {
     
     var actions = [(SwipeState) -> Void]()
     
+    public var disabled = false
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -87,7 +89,9 @@ public class CoffeeSwipeStateView: UIView {
         self.setupView()
         
         // Setup recognizers
-        self.setupRecognizers()
+        if !disabled {
+            self.setupRecognizers()
+        }
     }
     
     /**
