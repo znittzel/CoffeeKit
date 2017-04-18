@@ -109,8 +109,12 @@ public class CoffeeImagePresenter: UIView {
         }
     }
     
-    public func add(imageView: CircledImageView) {
+    public func add(imageView: CircledImageView, faded: Bool = false) {
         self.checkAndRemoveExampleViews()
+        
+        if faded {
+            imageView.alpha = 0.5
+        }
         
         self.imageViews.append(imageView)
         self.updateImageViews()
