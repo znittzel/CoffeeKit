@@ -315,12 +315,8 @@ public class CoffeeSwipeStateView: UIView {
     private func setupView() {
         var font: UIFont!
         
-        if let f = UIFont(name: "White Chocolate Mint", size: self.fontSize) {
-            font = f
-        } else {
-            font = UIFont(name: "Helvetica", size: self.fontSize)
-        }
-        
+        font = UIFont(name: "System", size: self.fontSize)
+
         var rects = self.getRectsByCurrentState()
         
         // Declined view
